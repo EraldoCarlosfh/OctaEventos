@@ -1,0 +1,119 @@
+<app-titulo [titulo]="'Eventos'" [iconClass]="'fa fa-calendar-alt'"></app-titulo>
+<div class="card rounded shadow-sm p-3 mb-4">
+  <div class="d-flex">
+    <div class="flex-fill pr-3">
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text">Filtro:</div>
+        </div>
+
+        <!-- Forma que estava sendo filtrado antes da Paginação -->
+        <!-- <input type="text" class="form-control" placeholder="Filtrar por Tema e Local" [(ngModel)]="filtroLista"> -->
+        <input type="text" class="form-control" placeholder="Filtrar por Tema e Local" (input)="filterEventos($event.target)">
+      </div>
+    </div>
+    <div>
+      <a class="d-flex btn btn-outline-primary" (click)="openModalAdd(templateAdd)">
+        <!--href="#" -->
+        <i class="fa fa-plus-circle my-1"></i>
+        <b class="ml-1 d-none d-sm-block">Novo</b>
+      </a>
+    </div>
+  </div>
+  <!-- <h3>Filtro: {{filterList}}</h3> -->
+  <table class="table table-striped table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th class="d-none d-md-table-cell">
+          <button type="button" class="btn btn-outline-light btn-sm" (click)="changeImage()">
+            <i class="{{!exibirImagem ? 'fa fa-eye' : 'fa fa-eye-slash'}}"></i>
+            {{!exibirImagem ? 'Exibir' : 'Ocultar/Editar'}}
+          </button>
+        </th>
+        <th>#</th>
+        <th>Tema</th>
+        <th class="d-none d-md-table-cell">Local</th>
+        <th>Data</th>
+        <th class="d-none d-md-table-cell">Qtd Pessoas</th>
+        <th class="d-none d-md-table-cell">Lote</th>
+        <th>Opções</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="eventos && eventos.length">
+      <tr *ngFor="let evento of eventos" (click)="openModal($event, templateEdit, evento.id)"
+        style="cursor: pointer;">
+        <td class="d-none d-md-table-cell">
+          <button *ngIf="!exibirImagem" type="button" class="btn btn-primary btn-md" tooltip="Editar"
+            (click)="openModal($event, templateEdit, evento.id)">
+            <i class="{{'fa fa-edit'}}"></i>
+          </button>
+          <img [collapse]="!exibirImagem" [isAnimated]="true" [src]="mostrarImagem(evento.imagemURL)"
+            [style.width.px]="larguraImagem" [style.margin.px]="margemImagem" alt=""
+            tooltip="{{'Evento: ' + evento.tema}}">
+        </td>
+        <td>{{evento.id}}</td>
+        <td>{{evento.tema}}</td>
+        <td class="d-none d-md-table-cell">{{evento.local}}</td>
+        <td>{{evento.dataEvento | localDateTime}}</td>
+        <td class="d-none d-md-table-cell">{{evento.qtdPessoas}}</td>
+        <td class="d-none d-md-table-cell">{{evento.lotes[0]?.nome | uppercase}}</td>
+        <td>
+          <button type="button" class="btn btn-danger btn-md" tooltip="Excluir"
+            (click)="openModal($event, templateDelete, evento.id)">
+            <i class="{{'fa fa-trash'}}"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot *ngIf="!eventos.length">
+      <tr>
+        <td class="text-center" colspan="8">
+          <h5>Sem eventos cadastrados!</h5>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+  <div class="d-flex justify-content-center">
+    <pagination 
+    [boundaryLinks]="true"  
+
+    [totalItems]="pagination.totalItems"
+    [itemsPerPage]="pagination.itemsPerPage"
+    [(ngModel)]="pagination.currentPage"
+    (pageChanged)="pageChanged($event)"
+    
+    pageBtnClass="btn"
+    previousText="&lsaquo;" 
+    nextText="&rsaquo;" 
+    firstText="&laquo;"
+    lastText="&raquo;">
+    </pagination>
+  </div>
+</div>
+<br>
+
+<ng-template #templateEdit>
+  <div class="modal-body text-center">
+    <p>Deseja editar o Evento de Código: {{this.eventoId}}?</p>
+    <button type="button" class="btn btn-default" (click)="detalheEvento(this.eventoId)"
+      (click)="confirmEditEvento()">Sim</button>
+    <button type="button" class="btn btn-primary" (click)="declineEvento()">Não</button>
+  </div>
+</ng-template>
+
+<ng-template #templateAdd>
+  <div class="modal-body text-center">
+    <p>Deseja adicionar um novo Evento?</p>
+    <button type="button" class="btn btn-default" routerLink="/eventos/cadastro"
+      (click)="confirmAddEvento()">Sim</button>
+    <button type="button" class="btn btn-primary" (click)="declineEvento()">Não</button>
+  </div>
+</ng-template>
+
+<ng-template #templateDelete>
+  <div class="modal-body text-center">
+    <p>Tem certeza que quer deletar o Evento de Código: {{this.eventoId}}?</p>
+    <button type="button" class="btn btn-default" (click)="confirmDeleteEvento()">Sim</button>
+    <button type="button" class="btn btn-primary" (click)="declineEvento()">Não</button>
+  </div>
+</ng-template>

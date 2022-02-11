@@ -1,0 +1,121 @@
+<div class="cadastro">
+  <div class="row mt-4">
+
+    <div class="col-md-6 d-none d-md-block" style="height: 450px;">
+      <div class="text-center col-md-12 my-auto side-heder">
+        <h1>Cadastro de Usuário</h1>
+        <img src="../../../../assets/registerImage.png" class="my-4" alt="" width="400px">
+      </div>
+    </div>
+
+    <div class="col-md-6">
+
+      <form [formGroup]="form" class="p-1" (ngSubmit)="confirmSave()">
+
+        <div class="pb-2 d-block d-md-none">
+          <h3 class="border-bottom">Cadastro de Usuário</h3>
+        </div>
+
+        <div class="form-row">
+
+          <div class="form-group col-sm-6">
+            <label>Primeiro Nome</label>
+            <input type="text" class="form-control"
+              [ngClass]="cssValidator(f.primeiroNome)" formControlName="primeiroNome"
+              placeholder="Insira o Nome Completo" />
+            <div *ngIf="f.primeiroNome.errors?.required && f.primeiroNome.touched" class="invalid-feedback">
+              Primeiro Nome é obrigatório!
+            </div>           
+          </div>
+
+          <div class="form-group col-sm-6">
+            <label>Último nome</label>
+            <input type="text" class="form-control"
+              [ngClass]="cssValidator(f.ultimoNome)" formControlName="ultimoNome"
+              placeholder="Insira o Último nome" />
+            <div *ngIf="f.ultimoNome.errors?.required && f.ultimoNome.touched" class="invalid-feedback">
+              Último Nome é obrigatório!
+            </div>           
+          </div>
+
+        </div>
+
+        <div class="form-group">
+          <label for="">Email:</label>
+          <input class="form-control" type="text"
+            [ngClass]="cssValidator(f.email)"
+            formControlName="email" placeholder="Insira o Email" />
+          <div *ngIf="f.email.errors?.required && f.email.touched" class="invalid-feedback">
+            E-mail é obrigatório.
+          </div>
+          <div *ngIf="f.email.errors?.email && f.email.touched" class="invalid-feedback">
+            Deve ser um endereço de e-mail válido!
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="">Usuario:</label>
+          <input class="form-control" type="text"
+            [ngClass]="cssValidator(f.userName)"
+            formControlName="userName" placeholder="Insira o nome de Usuário" />
+          <div *ngIf="f.userName.errors?.required && f.userName.touched" class="invalid-feedback">
+            Usuário é obrigatório!
+          </div>
+          <div *ngIf="f.userName.errors?.minlength && f.userName.touched" class="invalid-feedback">
+            Deve conter no mínimo 6 caracteres!
+          </div>
+        </div>
+
+        <div class="form-row">
+
+          <div class="form-group col-sm-6">
+            <label for="">Senha:</label>
+            <input class="form-control" type="password"
+              [ngClass]="cssValidator(f.password)"
+              formControlName="password" placeholder="Digite uma Senha" />
+            <div *ngIf="f.password.errors?.required && f.password.touched" class="invalid-feedback">
+             Senha é obrigatório!
+            </div>
+            <div *ngIf="f.password.errors?.minlength && f.password.touched" class="invalid-feedback">
+              Deve conter no mínimo 4 caracteres!
+            </div>
+          </div>
+
+          <div class="form-group col-sm-6">
+            <label for="">Confirmar Senha:</label>
+            <input class="form-control" type="password"
+              [ngClass]="cssValidator(f.confirmPassword)"
+              formControlName="confirmPassword" placeholder="Confirme a Senha" />
+             <div *ngIf="f.confirmPassword.errors?.required && f.confirmPassword.touched" class="invalid-feedback">
+              Confirmar senha é obrigatório!
+            </div>
+            <div *ngIf="f.confirmPassword.errors?.mustMatch && f.confirmPassword.touched" class="invalid-feedback">
+              Senhas devem ser iguais!
+            </div>
+          </div>
+
+        </div>
+
+        <div class="form-row p-1 mb-3">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="form-check-input" id="customCheck1" style="border-left: none">
+            <label class="custom-check-label">Eu concordo com os <a href="#">Termos de Uso</a>.</label>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-6">
+            <button class="btn btn-lg btn-success btn-block px-5" type="submit" [disabled]="!form.valid">
+              Registar
+            </button>
+          </div>
+          <div class="form-group col-6">
+            <button class="btn btn-lg btn-danger btn-block px-5" (click)="clearForm()">
+              Cancelar
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

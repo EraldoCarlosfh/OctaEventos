@@ -1,0 +1,11 @@
+.cadastro {
+  margin-top: 80px;
+}
+
+.ng-valid.required, input {
+  border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442; /* red */
+}

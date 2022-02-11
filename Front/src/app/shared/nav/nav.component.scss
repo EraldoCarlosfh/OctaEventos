@@ -1,0 +1,53 @@
+i {
+font-size: 30px;
+margin-top: 5px;
+}
+
+#user {
+  font-size: 14px;
+}
+
+.fa-user-edit {
+  font-size: 13px;
+}
+
+.fa-sign-out-alt {
+  font-size: 13px;
+  color: rgb(241, 50, 50);
+}
+
+#navbarDropdownMenuLink {
+ cursor: pointer;
+ color: rgb(163, 163, 163);
+ text-transform: capitalize;
+}
+
+ img {
+  width: 120px;
+  margin-left: 70px;
+ }
+
+ .navbar-brand {
+  color: #1a3359;
+  padding: 0px;
+  margin: 0px;
+  display: flex;
+  align-items: center;
+ }
+
+ .nav-link:hover {
+  color: #255bac !important;
+}
+.dropdown-toggle:hover{
+  color: #1a3359 !important;
+}
+
+ #nav-topo {
+  background-color: #efefef;
+  height: 70px;
+ }
+
+strong {
+  font-size: 25px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+ }

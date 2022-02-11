@@ -1,0 +1,17 @@
+<div class="d-flex p-3 my-3 text-white bg-dark rounded shadow-sm" style="margin-bottom: 40px !important; margin-top: 35px !important">
+  <div class="d-flex align-items-center mr-auto">
+    <i class="{{iconClass}} mr-3"></i>
+    <div class="lh-100">
+      <h2 class="mb-0 text-white">{{titulo}}</h2>
+      <small>{{subtitulo}}</small>
+    </div>
+  </div>
+  <div class="p-3" *ngIf="botaoListar">
+    <button class="btn btn-outline-light" (click)="listar()">
+      Listar {{titulo}}</button>
+  </div>
+  <div class="p-3" *ngIf="botaoEventos">
+    <button class="btn btn-outline-light" (click)="eventos()">
+      Listar Eventos</button>
+  </div>
+</div>
