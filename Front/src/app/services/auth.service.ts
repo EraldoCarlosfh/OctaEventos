@@ -34,6 +34,7 @@ export class AuthService {
 
   public logout(): void {
     localStorage.removeItem('token');
+    localStorage.removeItem('funcao')
     this.currentUserSource.next(undefined);
     this.currentUserSource.complete();
   }

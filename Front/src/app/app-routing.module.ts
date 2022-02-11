@@ -18,6 +18,7 @@ import { PaginaNaoEncontradaComponent } from './components/paginanaoencontrada/p
 import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
+  { path: '',  redirectTo: '/usuario/login', pathMatch: 'full'},
   { path: 'usuario', redirectTo: 'usuario/perfil', pathMatch: 'full' },
   {
     path: 'usuario', component: UserComponent,

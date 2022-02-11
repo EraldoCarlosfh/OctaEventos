@@ -50,6 +50,7 @@ export class NavComponent implements OnInit {
 
   logout(): void {
     localStorage.removeItem('token');   
+    localStorage.removeItem('funcao'); 
     this.toastr.show('Seu acesso foi encerrado', 'Log-Out!');
     this.router.navigate(['/usuario/login']);
     window.location.reload()
