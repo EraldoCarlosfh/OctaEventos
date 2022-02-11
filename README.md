@@ -6,15 +6,15 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ### **Backend** 
 
-Após efetuar o Clone do Projeto pelo git, acesse a pasta do Projeto **OctaEventos/Back/src**  você encontrará um arquivo chamado **OctaEventos.sln**, está e solução do projeto de um duplo clique e será iniciado o Projeto no Visual Studio, feito isto acesse espanda **OctaEventos.API**, verá dois arquivos **appsettings.Development.json** e **appsettings.json** abre os dois arquivos e altere o Password do **ConnectionStrings** a senha atual é **Cadalu2022#**, apague e coloque a senha do seu Banco de Dados, lembrando que está sendo utlizado neste Projeto o Banco de Dados Postgres. Verifique também as configurações de **Port=5432** e **User Id=postgres** se forem os mesmo do seu banco deixe como está senão altere.
+Após efetuar o Clone do Projeto pelo git, acesse a pasta do Projeto **OctaEventos/Back/src**  você encontrará um arquivo chamado **OctaEventos.sln**, está e solução do projeto de um duplo clique e será iniciado o Projeto no Visual Studio, feito isto espanda **OctaEventos.API**, altere os arquivos **appsettings.Development.json** e **appsettings.json** altere o Password do **ConnectionStrings** a senha atual é **Cadalu2022#**, apague e coloque a senha do seu Banco de Dados, lembrando que o Projeto está utilizando o Banco de Dados Postgres. Verifique também as configurações de **Port=5432** e **User Id=postgres** se forem os mesmo do seu banco deixe como está senão altere.
 
 Após alterar a senha para a senha do seu Banco de Dados Postgres vá em **Exibir** => **Outras Janelas** => **Console do Gerenciador de Pacotes**, digite o comando **update-database**, se sua senha estiver correta após este procedimento será criado o banco e as tabelas que constam na Migration.
 
-Finalizado estes processo defina **OctaEventos.API** como **Projeto de Inicialização** e pronto, pode Iniciar a Depuração do Projeto.
+Finalizado estes processos defina **OctaEventos.API** como **Projeto de Inicialização** e pronto, pode Iniciar a Depuração do Projeto.
 
 ### **Frontend**
 
-Após efetuar o Clone do Projeto pelo git, acesse a pasta do Projeto e inicie o diretório **OctaEventos/Front** no visual code, feito isto digite o comando **npm install** ou **npm i** para baixar as bibliotecas e dependências do projeto que se encontram na pasta node_modules, finalizado este processo inicie a aplicação com o comando **ng serve** ou **ng s**.
+Após efetuar o Clone do Projeto pelo git, acesse a pasta do Projeto e inicie o diretório **OctaEventos/Front** no visual code, feito isto digite o comando **npm install** ou **npm i** para baixar as bibliotecas e dependências do projeto que se encontraram na pasta node_modules, finalizado este processo inicie a aplicação com o comando **ng serve** ou **ng s**.
 
 ## Development server
 
